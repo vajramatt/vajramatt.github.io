@@ -1670,7 +1670,7 @@
 
     <footer>
         <div class="container">
-            <p class="footer-text">// 2025 Matthew Williamson. Built with <span>passion</span> and <span>purpose</span>.</p>
+            <p class="footer-text">// 2026 Matthew Williamson. Built with <span>passion</span> and <span>purpose</span>.</p>
         </div>
     </footer>
 
@@ -1804,9 +1804,9 @@
             }
         }
 
-        // Check saved preference
+        // Check saved preference (default to corporate)
         const savedTheme = localStorage.getItem('theme');
-        if (savedTheme === 'corporate') {
+        if (savedTheme !== 'cyber') {
             setTheme(true);
         }
 
