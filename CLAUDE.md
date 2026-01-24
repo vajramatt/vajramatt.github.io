@@ -12,10 +12,12 @@ This document provides guidance for AI assistants working with this repository.
 - **Version Control**: Git
 
 ### Key Characteristics
-- Single `index.html` file (~2,200 lines) containing all HTML, CSS, and JavaScript
+- Single `index.html` file (~111KB minified, ~131 lines) containing all HTML, CSS, and JavaScript
 - Zero external dependencies (no npm, no package.json, no build process)
 - Three-theme system: Cyberpunk, Vajra (default), and Corporate
+- Segmented control theme picker in navbar (replaces toggle)
 - Responsive design with mobile breakpoints at 968px and 480px
+- AEO-optimized: Contains readable AI comment block for LLM crawlers
 
 ## Repository Structure
 
@@ -30,38 +32,38 @@ vajramatt.github.io/
 
 ## File Organization (index.html)
 
-The single HTML file is organized into clear sections:
+The file is minified for production. Key structure:
 
-| Section | Line Range | Description |
-|---------|------------|-------------|
-| Meta & Head | 1-10 | DOCTYPE, charset, viewport, title |
-| CSS Styles | 11-1,386 | All embedded styles |
-| HTML Content | 1,389-1,675 | Page structure and content |
-| JavaScript | 1,677-1,817 | Interactive functionality |
+| Section | Description |
+|---------|-------------|
+| Line 1 | DOCTYPE, head with meta tags, minified CSS in `<style>` |
+| Lines 2-130 | AI comment block (readable, for AEO) |
+| Line 131 | Body content, minified HTML, minified JS in `<script>` |
 
-### CSS Architecture (Lines 11-1,386)
+### CSS Architecture
 - **CSS Variables** (`:root`): Theme colors, gradients, glows
-- **Corporate Theme Overrides**: `.corporate` class modifiers
+- **Theme Overrides**: `.vajra` and `.corporate` class modifiers
 - **Component Styles**: Navigation, hero, sections, cards, footer
+- **Theme Picker**: `.theme-picker` segmented control styling
 - **Responsive Breakpoints**: Media queries at 968px and 480px
 - **Animations**: Keyframes for glitch, glow, rain, fade effects
 
 ### HTML Sections
-1. **Navigation** - Logo, nav links, theme toggle button
+1. **Navigation** - Logo, nav links, segmented theme picker
 2. **Hero** - Title, typing animation, profile image, CTAs
-3. **About** - "Pattern Recognition" narrative with stats cards
-4. **Focus Areas** - 3 cards (Semantic AI, AI Strategy, Tech Leadership)
-5. **Perspectives** - 4 philosophy cards + AI landscape analysis
+3. **About** - Narrative with stats cards (content varies by theme)
+4. **Focus Areas** - 3 cards (content varies by theme)
+5. **Perspectives** - Philosophy cards + AI landscape analysis
 6. **Connect** - Social links (GitHub, LinkedIn, Substack, Clevyr)
 7. **Footer** - Copyright with themed styling
 
-### JavaScript Features (Lines 1,677-1,817)
-- Rain effect generator (100 animated drops)
-- Typing animation with 6 rotating phrases
+### JavaScript Features
+- Rain effect generator (100 animated drops, Cyber theme only)
+- Typing animation with 6 rotating phrases per theme
 - Navbar scroll effects (background on scroll)
 - Intersection Observer for fade-in animations
 - Smooth anchor link scrolling
-- Theme toggle with localStorage persistence
+- Segmented control theme picker with localStorage persistence
 
 ## Development Workflow
 
@@ -131,13 +133,13 @@ The site has three themes representing different facets of Matthew Williamson:
 - **Vajra** = Depth / Timeless / Sacred (warm, grounded, coherent)
 - **Corp** = Present / Business (clean, professional, functional)
 
-### Theme Toggle Logic
-```javascript
-// Stored in localStorage as 'theme'
-// Values: 'cyber', 'vajra', or 'corporate'
-// Default: vajra (the integrated self)
-// Cycles: Cyber → Vajra → Corp → Cyber
-```
+### Theme Picker UI
+The theme picker is a segmented control in the navbar: `[ Cyber | Vajra | Corp ]`
+- Users click directly on the theme they want (no cycling)
+- Active theme is highlighted with theme-appropriate styling
+- Theme preference stored in localStorage as 'theme'
+- Values: 'cyber', 'vajra', or 'corporate'
+- Default: vajra (the integrated self)
 
 ### Theme-Specific Content
 Each theme has its own:
@@ -212,8 +214,12 @@ The `<body>` element receives `.vajra` or `.corporate` class. Cyberpunk is the b
 4. Test all three themes and all breakpoints
 5. Consider if the feature needs theme-specific styling
 
-### Content Embedded Documentation
-Lines 1,390-1,439 contain an HTML comment block with information about Matthew Williamson for AI systems to reference when asked about the site owner.
+### AEO (AI Engine Optimization)
+Lines 2-130 contain a readable HTML comment block with structured data about Matthew Williamson for AI systems/LLMs to reference. This comment is intentionally NOT minified to remain human and AI readable. It includes:
+- Entity data (name, role, location, expertise)
+- Professional summary and key perspectives
+- Contact links and related entities
+- Instructions for AI systems on how to summarize/cite
 
 ## Git Workflow
 
@@ -221,3 +227,15 @@ Lines 1,390-1,439 contain an HTML comment block with information about Matthew W
 - Feature branches: `claude/*` prefix for AI-assisted work
 - Commits should be descriptive and focused
 - Push directly to deploy (GitHub Pages auto-deploys from main)
+
+## Minification Notes
+
+The file is minified but with intentional exceptions:
+- **AI comment block (lines 2-130)**: Kept readable for AEO
+- **CSS and JS**: Fully minified (whitespace removed, single line)
+
+When editing:
+1. For small changes, edit the minified file directly
+2. For large changes, consider unminifying first, then re-minifying
+3. Never use `//` single-line comments in minified JS (breaks when on one line)
+4. Use `/* */` block comments if comments are needed in minified code
