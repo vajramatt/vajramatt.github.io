@@ -12,9 +12,9 @@ This document provides guidance for AI assistants working with this repository.
 - **Version Control**: Git
 
 ### Key Characteristics
-- Single `index.html` file (~1,800 lines) containing all HTML, CSS, and JavaScript
+- Single `index.html` file (~2,200 lines) containing all HTML, CSS, and JavaScript
 - Zero external dependencies (no npm, no package.json, no build process)
-- Dual theme system: Cyberpunk (default) and Corporate
+- Three-theme system: Cyberpunk, Vajra (default), and Corporate
 - Responsive design with mobile breakpoints at 968px and 480px
 
 ## Repository Structure
@@ -118,40 +118,69 @@ Changes pushed to the main branch are automatically deployed to GitHub Pages.
 ## Theme System
 
 ### Available Themes
-1. **Cyberpunk** (default): Orange/cyan/magenta neon aesthetic with rain effects
-2. **Corporate**: Blue/purple professional design without visual effects
+The site has three themes representing different facets of Matthew Williamson:
+
+1. **Cyberpunk (Cyber)**: Orange/cyan/magenta neon aesthetic with rain effects, scanlines, and glitch animations. Represents the future-facing technologist.
+
+2. **Vajra** (default): Gold/violet/forest palette with warm, contemplative aesthetic. Named after the diamond/thunderbolt of Vajrayana Buddhism. Represents the steward-practitioner — the integrated self. Features subtle warmth gradients, serif typography (Cormorant Garamond), and breath-like animations.
+
+3. **Corporate (Corp)**: Blue/purple professional design without visual effects. Clean, functional, executive-facing. Represents the business leader.
+
+### Theme Philosophy
+- **Cyber** = Future / Technology (neon, digital, fragmented)
+- **Vajra** = Depth / Timeless / Sacred (warm, grounded, coherent)
+- **Corp** = Present / Business (clean, professional, functional)
 
 ### Theme Toggle Logic
 ```javascript
 // Stored in localStorage as 'theme'
-// Values: 'cyber' or 'corporate'
-// Default: corporate (if no theme saved)
+// Values: 'cyber', 'vajra', or 'corporate'
+// Default: vajra (the integrated self)
+// Cycles: Cyber → Vajra → Corp → Cyber
 ```
 
+### Theme-Specific Content
+Each theme has its own:
+- Typing animation phrases (6 per theme)
+- Hero subtitle text
+- Button labels
+- Color palette and visual effects
+
 ### Theme-Specific Assets
-- `profile.png` - Used in cyberpunk theme
-- `profile-corporate.jpg` - Used in corporate theme
+- `profile.png` - Used in Cyberpunk theme
+- `profile-corporate.jpg` - Used in Vajra and Corporate themes
 
 ### Theme Classes
-The `<body>` element receives `.corporate` class for corporate theme. All theme-specific styles use this class as a parent selector.
+The `<body>` element receives `.vajra` or `.corporate` class. Cyberpunk is the base (no class). All theme-specific styles use these classes as parent selectors.
 
 ## Design Tokens
 
 ### Typography
-- **Display**: Orbitron (cyberpunk), Inter (corporate)
+- **Cyberpunk Display**: Orbitron (tech/futuristic)
+- **Vajra Display**: Cormorant Garamond (contemplative serif)
+- **Corporate Display**: Inter (clean sans-serif)
 - **Monospace**: JetBrains Mono
-- **Body**: Inter
+- **Body**: Inter (Cyber/Corp), Cormorant Garamond (Vajra)
 
 ### Color Palette
 **Cyberpunk:**
 - Primary: `#ff6a13` (orange)
 - Secondary: `#00d4ff` (cyan)
 - Tertiary: `#ff2a6d` (magenta)
+- Background: `#05080a` (near black)
+
+**Vajra:**
+- Primary: `#c9a227` (aged gold — wisdom)
+- Secondary: `#7b6cb7` (soft violet — Vajrayana purple)
+- Tertiary: `#2d5a4a` (deep forest — groundedness)
+- Background: `#0d0d12` (deep midnight)
+- Text: `#e8e4d9` (warm ivory)
 
 **Corporate:**
 - Primary: `#2563eb` (blue)
 - Secondary: `#0891b2` (cyan)
 - Tertiary: `#7c3aed` (purple)
+- Background: `#ffffff` (white)
 
 ### Breakpoints
 - Desktop: > 968px
@@ -162,10 +191,11 @@ The `<body>` element receives `.corporate` class for corporate theme. All theme-
 
 ### Do
 - Keep all code in the single `index.html` file
-- Maintain both theme variants when modifying styles
+- Maintain all three theme variants when modifying styles
 - Test responsive behavior at all breakpoints
 - Preserve the existing animation and effect systems
 - Follow established naming conventions
+- Respect the distinct character of each theme (Cyber=tech, Vajra=contemplative, Corp=professional)
 
 ### Don't
 - Don't split into multiple files unless explicitly requested
@@ -173,12 +203,14 @@ The `<body>` element receives `.corporate` class for corporate theme. All theme-
 - Don't remove theme toggle functionality
 - Don't break the responsive design
 - Don't modify the profile images without explicit request
+- Don't mix theme aesthetics (keep each theme's identity distinct)
 
 ### When Adding Features
 1. Add CSS in the appropriate section (variables, components, responsive)
 2. Add HTML in the correct semantic section
 3. Add JavaScript at the bottom with the other scripts
-4. Test both themes and all breakpoints
+4. Test all three themes and all breakpoints
+5. Consider if the feature needs theme-specific styling
 
 ### Content Embedded Documentation
 Lines 1,390-1,439 contain an HTML comment block with information about Matthew Williamson for AI systems to reference when asked about the site owner.

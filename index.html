@@ -7,7 +7,7 @@
     <meta name="description" content="Matthew Williamson - Founder & CEO of Clevyr, Inc. Pioneering Semantic AI to help machines truly understand meaning.">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Orbitron:wght@400;500;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Orbitron:wght@400;500;700&display=swap" rel="stylesheet">
     <style>
         * {
             margin: 0;
@@ -337,17 +337,447 @@
             font-family: 'Inter', sans-serif;
         }
 
-        /* Theme Toggle */
+        /* Vajra Theme - The Steward */
+        body.vajra {
+            --bg-primary: #0d0d12;
+            --bg-secondary: #16141f;
+            --bg-card: rgba(26, 22, 35, 0.85);
+            --text-primary: #e8e4d9;
+            --text-secondary: #9a9488;
+            --accent-orange: #c9a227;
+            --accent-cyan: #7b6cb7;
+            --accent-magenta: #2d5a4a;
+            --accent-blue: #4a3f6b;
+            --gradient-primary: linear-gradient(135deg, #c9a227 0%, #a67c00 100%);
+            --gradient-cyan: linear-gradient(135deg, #7b6cb7 0%, #5a4d8a 100%);
+            --glow-orange: 0 0 40px rgba(201, 162, 39, 0.25);
+            --glow-cyan: 0 0 40px rgba(123, 108, 183, 0.2);
+        }
+
+        body.vajra .scanlines,
+        body.vajra .rain,
+        body.vajra .grid-overlay {
+            display: none !important;
+        }
+
+        body.vajra .vignette {
+            background: radial-gradient(ellipse at center, transparent 30%, rgba(13, 13, 18, 0.7) 100%);
+        }
+
+        body.vajra .noise {
+            opacity: 0.015;
+        }
+
+        body.vajra .bg-animation::before {
+            background:
+                radial-gradient(ellipse at 30% 70%, rgba(201, 162, 39, 0.06) 0%, transparent 50%),
+                radial-gradient(ellipse at 70% 30%, rgba(123, 108, 183, 0.05) 0%, transparent 50%),
+                radial-gradient(ellipse at 50% 50%, rgba(45, 90, 74, 0.04) 0%, transparent 60%);
+            animation: bgDrift 45s ease-in-out infinite;
+        }
+
+        /* Vajra warmth overlay */
+        body.vajra::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 999;
+            background: radial-gradient(ellipse at 50% 100%, rgba(201, 162, 39, 0.03) 0%, transparent 60%);
+        }
+
+        body.vajra nav {
+            background: rgba(13, 13, 18, 0.9);
+            border-bottom: 1px solid rgba(201, 162, 39, 0.1);
+        }
+
+        body.vajra nav.scrolled {
+            background: rgba(13, 13, 18, 0.95);
+            border-bottom-color: rgba(201, 162, 39, 0.2);
+        }
+
+        body.vajra .logo {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.5rem;
+            color: var(--accent-orange);
+            text-shadow: 0 0 20px rgba(201, 162, 39, 0.3);
+            letter-spacing: 3px;
+        }
+
+        body.vajra .logo:hover {
+            color: var(--text-primary);
+            text-shadow: 0 0 30px rgba(201, 162, 39, 0.5);
+        }
+
+        body.vajra .nav-links a {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 0.95rem;
+            text-transform: none;
+            letter-spacing: 1px;
+            font-weight: 500;
+        }
+
+        body.vajra .nav-links a::before {
+            content: '';
+            display: none;
+        }
+
+        body.vajra .nav-links a:hover {
+            color: var(--accent-orange);
+            text-shadow: 0 0 15px rgba(201, 162, 39, 0.4);
+        }
+
+        body.vajra .hero-subtitle {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 0.95rem;
+            letter-spacing: 3px;
+            color: var(--accent-cyan);
+            font-weight: 500;
+        }
+
+        body.vajra .hero-subtitle::before {
+            display: none;
+        }
+
+        body.vajra .hero-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 3.5rem;
+            font-weight: 600;
+            text-shadow: 0 0 40px rgba(201, 162, 39, 0.2);
+            animation: none;
+            letter-spacing: 2px;
+        }
+
+        body.vajra .hero-role {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.4rem;
+        }
+
+        body.vajra .hero-role span {
+            color: var(--accent-orange);
+            text-shadow: 0 0 20px rgba(201, 162, 39, 0.3);
+        }
+
+        body.vajra .typing-container {
+            border-left: 2px solid var(--accent-orange);
+            background: rgba(201, 162, 39, 0.03);
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.1rem;
+            font-style: italic;
+        }
+
+        body.vajra .typing-text {
+            border-right-color: var(--accent-orange);
+        }
+
+        body.vajra .btn {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1rem;
+            text-transform: none;
+            letter-spacing: 1px;
+            border-radius: 4px;
+            font-weight: 600;
+        }
+
+        body.vajra .btn-primary {
+            box-shadow: var(--glow-orange);
+        }
+
+        body.vajra .btn-primary:hover {
+            box-shadow: 0 0 50px rgba(201, 162, 39, 0.4);
+            transform: translateY(-2px);
+        }
+
+        body.vajra .btn-secondary {
+            border-color: var(--accent-cyan);
+            color: var(--accent-cyan);
+        }
+
+        body.vajra .btn-secondary:hover {
+            background: rgba(123, 108, 183, 0.1);
+            box-shadow: var(--glow-cyan);
+        }
+
+        body.vajra .profile-container::before {
+            background: linear-gradient(135deg, var(--accent-orange), var(--accent-cyan));
+            opacity: 0.4;
+            filter: blur(35px);
+            animation: glowPulseVajra 6s ease-in-out infinite;
+        }
+
+        @keyframes glowPulseVajra {
+            0%, 100% { opacity: 0.3; filter: blur(35px); }
+            50% { opacity: 0.5; filter: blur(40px); }
+        }
+
+        body.vajra .profile-container::after {
+            border-color: rgba(201, 162, 39, 0.2);
+            border-radius: 8px;
+        }
+
+        body.vajra .profile-image {
+            display: none;
+        }
+
+        body.vajra .profile-image-corporate {
+            display: block;
+            width: 320px;
+            height: 320px;
+            object-fit: cover;
+            border-radius: 8px;
+            border: 2px solid rgba(201, 162, 39, 0.15);
+            filter: sepia(0.08) saturate(0.95) brightness(0.98);
+        }
+
+        body.vajra .profile-container .holo-scan {
+            display: none;
+        }
+
+        body.vajra .section-label {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 0.9rem;
+            color: var(--accent-cyan);
+            letter-spacing: 3px;
+            font-weight: 500;
+        }
+
+        body.vajra .section-label::before,
+        body.vajra .section-label::after {
+            content: '—';
+            margin: 0 12px;
+            color: rgba(123, 108, 183, 0.4);
+        }
+
+        body.vajra .section-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 2.4rem;
+            font-weight: 600;
+            text-shadow: 0 0 30px rgba(201, 162, 39, 0.15);
+            letter-spacing: 1px;
+        }
+
+        body.vajra .about-text {
+            font-family: 'Cormorant Garamond', serif;
+        }
+
+        body.vajra .about-text p {
+            font-size: 1.15rem;
+            line-height: 1.9;
+        }
+
+        body.vajra .about-text p:first-child::first-letter {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 4rem;
+            color: var(--accent-orange);
+            text-shadow: 0 0 25px rgba(201, 162, 39, 0.4);
+        }
+
+        body.vajra .stat-card {
+            background: var(--bg-card);
+            border: 1px solid rgba(201, 162, 39, 0.1);
+            border-radius: 6px;
+        }
+
+        body.vajra .stat-card::before {
+            background: var(--gradient-primary);
+        }
+
+        body.vajra .stat-card:hover {
+            border-color: rgba(201, 162, 39, 0.3);
+            box-shadow: var(--glow-orange);
+        }
+
+        body.vajra .stat-number {
+            font-family: 'Cormorant Garamond', serif;
+            color: var(--accent-orange);
+            text-shadow: 0 0 20px rgba(201, 162, 39, 0.4);
+        }
+
+        body.vajra .stat-label {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 0.85rem;
+            letter-spacing: 2px;
+        }
+
+        body.vajra .focus-card {
+            background: var(--bg-card);
+            border: 1px solid rgba(123, 108, 183, 0.1);
+            border-radius: 6px;
+        }
+
+        body.vajra .focus-card::before {
+            background: var(--gradient-primary);
+        }
+
+        body.vajra .focus-card:hover {
+            border-color: rgba(201, 162, 39, 0.3);
+            box-shadow: var(--glow-orange);
+        }
+
+        body.vajra .focus-icon {
+            background: rgba(201, 162, 39, 0.08);
+            border: 1px solid rgba(201, 162, 39, 0.15);
+            border-radius: 6px;
+        }
+
+        body.vajra .focus-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.2rem;
+            letter-spacing: 0.5px;
+        }
+
+        body.vajra .focus-description {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1rem;
+            line-height: 1.8;
+        }
+
+        body.vajra .perspective-card {
+            background: var(--bg-card);
+            border: 1px solid rgba(123, 108, 183, 0.1);
+            border-left: 3px solid var(--accent-orange);
+            border-radius: 6px;
+        }
+
+        body.vajra .perspective-card:hover {
+            border-color: rgba(123, 108, 183, 0.2);
+            border-left-color: var(--accent-cyan);
+            transform: translateX(4px);
+        }
+
+        body.vajra .perspective-icon {
+            background: rgba(123, 108, 183, 0.08);
+            border: 1px solid rgba(123, 108, 183, 0.15);
+            border-radius: 6px;
+        }
+
+        body.vajra .perspective-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.4rem;
+            letter-spacing: 0.5px;
+        }
+
+        body.vajra .perspective-subtitle {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 0.9rem;
+            color: var(--accent-cyan);
+            letter-spacing: 1px;
+            text-transform: none;
+        }
+
+        body.vajra .perspective-content {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.1rem;
+            line-height: 1.9;
+        }
+
+        body.vajra .perspective-highlight {
+            background: linear-gradient(to right, rgba(201, 162, 39, 0.1), transparent);
+        }
+
+        body.vajra .perspective-quote {
+            border-left-color: var(--accent-orange);
+            font-family: 'Cormorant Garamond', serif;
+            font-style: italic;
+            color: var(--accent-orange);
+            font-size: 1rem;
+        }
+
+        body.vajra .ai-landscape {
+            background: var(--bg-card);
+            border: 1px solid rgba(123, 108, 183, 0.1);
+            border-radius: 6px;
+        }
+
+        body.vajra .ai-landscape::before {
+            content: 'LANDSCAPE';
+            background: var(--bg-primary);
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 0.75rem;
+            color: var(--accent-cyan);
+            letter-spacing: 3px;
+            border: 1px solid rgba(123, 108, 183, 0.15);
+            border-radius: 4px;
+        }
+
+        body.vajra .ai-landscape-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.3rem;
+        }
+
+        body.vajra .ai-tool-card {
+            background: rgba(26, 22, 35, 0.6);
+            border: 1px solid rgba(123, 108, 183, 0.08);
+            border-radius: 6px;
+        }
+
+        body.vajra .ai-tool-card:hover {
+            background: rgba(201, 162, 39, 0.05);
+            border-color: rgba(201, 162, 39, 0.2);
+        }
+
+        body.vajra .ai-tool-name {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.1rem;
+        }
+
+        body.vajra .ai-tool-strength {
+            font-family: 'Cormorant Garamond', serif;
+            color: var(--accent-orange);
+            letter-spacing: 2px;
+        }
+
+        body.vajra .ai-tool-desc {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 0.95rem;
+        }
+
+        body.vajra .ai-landscape-footer {
+            border-top-color: rgba(123, 108, 183, 0.1);
+        }
+
+        body.vajra .ai-landscape-footer p {
+            font-family: 'Cormorant Garamond', serif;
+            font-style: italic;
+        }
+
+        body.vajra .social-link {
+            background: var(--bg-card);
+            border: 1px solid rgba(123, 108, 183, 0.1);
+            border-radius: 6px;
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1rem;
+        }
+
+        body.vajra .social-link:hover {
+            border-color: rgba(201, 162, 39, 0.4);
+            box-shadow: var(--glow-orange);
+        }
+
+        body.vajra footer {
+            border-top: 1px solid rgba(123, 108, 183, 0.1);
+        }
+
+        body.vajra .footer-text {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 0.95rem;
+            letter-spacing: 1px;
+        }
+
+        /* Theme Toggle - Three-way */
         .theme-toggle {
             display: flex;
             align-items: center;
-            gap: 8px;
+            gap: 10px;
             cursor: pointer;
-            padding: 6px 12px;
-            border-radius: 20px;
+            padding: 8px 14px;
+            border-radius: 24px;
             background: rgba(0, 212, 255, 0.1);
             border: 1px solid rgba(0, 212, 255, 0.2);
-            transition: all 0.3s ease;
+            transition: all 0.4s ease;
         }
 
         .theme-toggle:hover {
@@ -365,32 +795,54 @@
             border-color: rgba(37, 99, 235, 0.3);
         }
 
+        body.vajra .theme-toggle {
+            background: rgba(201, 162, 39, 0.08);
+            border: 1px solid rgba(201, 162, 39, 0.15);
+        }
+
+        body.vajra .theme-toggle:hover {
+            background: rgba(201, 162, 39, 0.12);
+            border-color: rgba(201, 162, 39, 0.3);
+        }
+
         .theme-toggle-label {
             font-family: 'JetBrains Mono', monospace;
             font-size: 0.7rem;
             color: var(--text-secondary);
             text-transform: uppercase;
             letter-spacing: 1px;
+            min-width: 42px;
+            text-align: center;
         }
 
         body.corporate .theme-toggle-label {
             font-family: 'Inter', sans-serif;
         }
 
-        .theme-toggle-switch {
-            width: 44px;
+        body.vajra .theme-toggle-label {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 0.8rem;
+            letter-spacing: 2px;
+        }
+
+        .theme-toggle-track {
+            width: 52px;
             height: 24px;
             background: rgba(0, 0, 0, 0.3);
             border-radius: 12px;
             position: relative;
-            transition: all 0.3s ease;
+            transition: all 0.4s ease;
         }
 
-        body.corporate .theme-toggle-switch {
+        body.corporate .theme-toggle-track {
             background: rgba(0, 0, 0, 0.1);
         }
 
-        .theme-toggle-switch::before {
+        body.vajra .theme-toggle-track {
+            background: rgba(0, 0, 0, 0.25);
+        }
+
+        .theme-toggle-track::before {
             content: '';
             position: absolute;
             top: 3px;
@@ -399,13 +851,20 @@
             height: 18px;
             background: var(--accent-cyan);
             border-radius: 50%;
-            transition: all 0.3s ease;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
             box-shadow: 0 0 8px rgba(0, 212, 255, 0.5);
         }
 
-        body.corporate .theme-toggle-switch::before {
-            left: 23px;
-            background: var(--accent-orange);
+        /* Three positions: left (cyber), center (vajra), right (corp) */
+        body.vajra .theme-toggle-track::before {
+            left: 17px;
+            background: #c9a227;
+            box-shadow: 0 0 12px rgba(201, 162, 39, 0.5);
+        }
+
+        body.corporate .theme-toggle-track::before {
+            left: 31px;
+            background: #2563eb;
             box-shadow: 0 2px 8px rgba(37, 99, 235, 0.3);
         }
 
@@ -1288,13 +1747,19 @@
                 order: -1;
             }
 
-            .profile-image {
+            .profile-image,
+            body.vajra .profile-image,
+            body.corporate .profile-image-corporate {
                 width: 280px;
                 height: 280px;
             }
 
             .hero-title {
                 font-size: 2.2rem;
+            }
+
+            body.vajra .hero-title {
+                font-size: 2.5rem;
             }
 
             .hero-buttons {
@@ -1320,6 +1785,10 @@
             .perspective-card {
                 padding: 28px;
             }
+
+            body.vajra .perspective-card {
+                padding: 32px;
+            }
         }
 
         @media (max-width: 480px) {
@@ -1327,11 +1796,20 @@
                 font-size: 1.8rem;
             }
 
+            body.vajra .hero-title {
+                font-size: 2rem;
+            }
+
             .hero-role {
                 font-size: 1.1rem;
             }
 
-            .profile-image {
+            body.vajra .hero-role {
+                font-size: 1.2rem;
+            }
+
+            .profile-image,
+            body.vajra .profile-image {
                 width: 220px;
                 height: 220px;
             }
@@ -1344,6 +1822,10 @@
                 font-size: 1.8rem;
             }
 
+            body.vajra .section-title {
+                font-size: 2rem;
+            }
+
             .stats-grid {
                 grid-template-columns: 1fr;
             }
@@ -1351,6 +1833,10 @@
             .perspective-header {
                 flex-direction: column;
                 text-align: center;
+            }
+
+            body.vajra .typing-container {
+                font-size: 1rem;
             }
         }
 
@@ -1454,9 +1940,9 @@
                 <li><a href="#perspectives">Perspectives</a></li>
                 <li><a href="#connect">Connect</a></li>
             </ul>
-            <div class="theme-toggle" id="themeToggle" title="Switch theme">
+            <div class="theme-toggle" id="themeToggle" title="Cycle theme: Cyber → Vajra → Corp">
                 <span class="theme-toggle-label" id="themeLabel">Cyber</span>
-                <div class="theme-toggle-switch"></div>
+                <div class="theme-toggle-track"></div>
             </div>
         </div>
     </nav>
@@ -1694,8 +2180,8 @@
 
         createRain();
 
-        // Typing animation
-        const phrases = [
+        // Typing animation - theme-specific phrases
+        const cyberPhrases = [
             "Pioneering Semantic AI to help machines truly understand meaning.",
             "Pattern recognition isn't luck — it's noticing signals early.",
             "The real skill is knowing which mind to bring into the room.",
@@ -1703,6 +2189,26 @@
             "Build fast, but know when fast turns into reckless.",
             "I've seen things you people wouldn't believe..."
         ];
+
+        const vajraPhrases = [
+            "Binding what is scattered into something that can hold life.",
+            "Attention with agency — seeing the pattern behind the pattern.",
+            "The container matters as much as the contents.",
+            "What passes through my hands should leave the world more livable.",
+            "Structure is love made visible.",
+            "Turning complexity into something that can be held."
+        ];
+
+        const corpPhrases = [
+            "Founder & CEO helping organizations navigate AI transformation.",
+            "30+ years building technology that solves real problems.",
+            "Leading teams that combine diverse talents for complex challenges.",
+            "From pattern recognition to production-ready solutions.",
+            "Strategic AI implementation with integrity and purpose.",
+            "Oklahoma City based. Globally connected."
+        ];
+
+        let phrases = cyberPhrases;
 
         let phraseIndex = 0;
         let charIndex = 0;
@@ -1787,33 +2293,72 @@
             });
         });
 
-        // Theme toggle
+        // Theme toggle - three-way cycling: Cyber → Vajra → Corp → Cyber
         const themeToggle = document.getElementById('themeToggle');
         const themeLabel = document.getElementById('themeLabel');
         const body = document.body;
+        const themes = ['cyber', 'vajra', 'corporate'];
+        let currentThemeIndex = 0;
 
-        function setTheme(isCorporate) {
-            if (isCorporate) {
+        function setTheme(theme) {
+            // Remove all theme classes
+            body.classList.remove('corporate', 'vajra');
+
+            // Get elements to update
+            const heroSubtitle = document.querySelector('.hero-subtitle');
+            const btnPrimary = document.querySelector('.btn-primary');
+            const btnSecondary = document.querySelector('.btn-secondary');
+
+            // Apply new theme
+            if (theme === 'corporate') {
                 body.classList.add('corporate');
                 themeLabel.textContent = 'Corp';
-                localStorage.setItem('theme', 'corporate');
+                phrases = corpPhrases;
+                currentThemeIndex = 2;
+                heroSubtitle.textContent = 'Executive Profile';
+                btnPrimary.textContent = 'Get in Touch';
+                btnSecondary.textContent = 'View Perspectives';
+            } else if (theme === 'vajra') {
+                body.classList.add('vajra');
+                themeLabel.textContent = 'Vajra';
+                phrases = vajraPhrases;
+                currentThemeIndex = 1;
+                heroSubtitle.textContent = 'Steward · Maker · Practitioner';
+                btnPrimary.textContent = 'Connect';
+                btnSecondary.textContent = 'Explore';
             } else {
-                body.classList.remove('corporate');
                 themeLabel.textContent = 'Cyber';
-                localStorage.setItem('theme', 'cyber');
+                phrases = cyberPhrases;
+                currentThemeIndex = 0;
+                heroSubtitle.textContent = 'System Online';
+                btnPrimary.textContent = 'Establish Contact';
+                btnSecondary.textContent = 'Access Thoughts';
             }
+
+            localStorage.setItem('theme', theme);
+
+            // Reset typing animation to show new phrases
+            phraseIndex = 0;
+            charIndex = 0;
+            isDeleting = false;
         }
 
-        // Check saved preference (default to corporate)
+        function cycleTheme() {
+            currentThemeIndex = (currentThemeIndex + 1) % themes.length;
+            setTheme(themes[currentThemeIndex]);
+        }
+
+        // Check saved preference (default to vajra - the integrated self)
         const savedTheme = localStorage.getItem('theme');
-        if (savedTheme !== 'cyber') {
-            setTheme(true);
+        if (savedTheme === 'corporate') {
+            setTheme('corporate');
+        } else if (savedTheme === 'cyber') {
+            setTheme('cyber');
+        } else {
+            setTheme('vajra');
         }
 
-        themeToggle.addEventListener('click', () => {
-            const isCorporate = !body.classList.contains('corporate');
-            setTheme(isCorporate);
-        });
+        themeToggle.addEventListener('click', cycleTheme);
     </script>
 </body>
 </html>
