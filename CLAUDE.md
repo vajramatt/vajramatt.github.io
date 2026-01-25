@@ -2,6 +2,29 @@
 
 This document provides guidance for AI assistants working with this repository.
 
+## Design Philosophy & Decisions
+
+### Why Corporate Theme (January 2026)
+The site was originally built with a Cyberpunk/Blade Runner aesthetic (neon orange/cyan, rain effects, glitch animations). It was rebranded to a professional corporate theme because:
+
+- **Target audience shifted**: The goal is now to attract corporate clients looking to hire an AI consultant, not to showcase personal creative expression
+- **Credibility signals**: VPs evaluating consultants want to see "senior, safe bet, enterprise-ready" — not "creative edgy developer"
+- **Content unchanged**: The actual perspectives and expertise remain the same; only the visual presentation changed
+
+### Why Keep the Hidden AI Comment Block
+The source code contains an extensive HTML comment (lines 2-173) with Blade Runner and TRON references. This stays because:
+
+- **AEO (AI Engine Optimization)**: The structured data helps LLMs accurately summarize Matthew when crawling the page
+- **Easter egg for machines**: It's a fun, weird message to other AIs parsing the source — humans viewing the rendered page never see it
+- **No conflict with corporate aesthetic**: The hidden comment doesn't affect the professional appearance
+
+### Why Single-File Architecture
+Everything lives in one `index.html` because:
+
+- **Zero build complexity**: No npm, no bundlers, no build failures
+- **Instant deployment**: Push to main and it's live on GitHub Pages
+- **Easy to reason about**: One file, one truth
+
 ## Project Overview
 
 **vajramatt.github.io** is a personal portfolio website for Matthew Williamson, Founder & CEO of Clevyr, Inc. It's a zero-dependency, single-file static website designed for GitHub Pages deployment.
@@ -192,3 +215,18 @@ Two profile images exist:
 - `profile-corporate.jpg` - Professional headshot (currently active)
 
 To switch images, update the `<img src="">` in the hero section.
+
+## Decision Log
+
+| Date | Decision | Reasoning |
+|------|----------|-----------|
+| Jan 2026 | Removed theme toggle (Cyber/Vajra/Corporate) | Too complex, caused bugs, user wanted simplicity |
+| Jan 2026 | Reverted to Cyber-only | Simplified from broken multi-theme system |
+| Jan 2026 | Added Blade Runner/TRON easter eggs to AI comment | Fun, weird, makes humans wonder what AI is doing |
+| Jan 2026 | Rebranded to Corporate theme | Target audience is corporate clients hiring AI consultants |
+| Jan 2026 | Kept hidden AI comment block | AEO value + easter eggs don't conflict with professional appearance |
+| Jan 2026 | Updated hero tagline | More consultant-focused: leads with credibility (USMC, CEO, speaker), ends with CTA |
+
+## Content Philosophy
+
+Matthew's perspectives (AI ethics, vibe coding warnings, AI landscape analysis) are deliberately opinionated and substantive. They demonstrate thought leadership and signal that he's not just a technician but someone who thinks critically about the industry. This content is a feature, not filler — it differentiates him from generic "I do AI consulting" pages.
