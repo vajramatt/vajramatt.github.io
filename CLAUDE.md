@@ -12,50 +12,49 @@ This document provides guidance for AI assistants working with this repository.
 - **Version Control**: Git
 
 ### Key Characteristics
-- Single `index.html` file (~37KB minified, ~133 lines) containing all HTML, CSS, and JavaScript
+- Single `index.html` file containing all HTML, CSS, and JavaScript
 - Zero external dependencies (no npm, no package.json, no build process)
-- Cyberpunk/Blade Runner aesthetic (single theme)
+- Professional corporate aesthetic (blue/purple color scheme)
 - Responsive design with mobile breakpoints at 968px and 480px
-- AEO-optimized: Contains readable AI comment block for LLM crawlers
+- AEO-optimized: Contains readable AI comment block for LLM crawlers (with hidden Blade Runner/TRON easter eggs)
 
 ## Repository Structure
 
 ```
 vajramatt.github.io/
 ├── index.html            # Complete website (HTML + CSS + JS)
-├── profile.png           # Profile image (cyberpunk style)
+├── profile.png           # Profile image (cyberpunk style, unused)
+├── profile-corporate.jpg # Profile image (corporate style, active)
 ├── CLAUDE.md            # This file
 └── .git/                # Git repository
 ```
 
 ## File Organization (index.html)
 
-The file is minified for production. Key structure:
+The file structure:
 
 | Section | Description |
 |---------|-------------|
-| Line 1 | DOCTYPE, head with meta tags, JSON-LD, minified CSS in `<style>` |
-| Lines 2-132 | AI comment block (readable, for AEO) |
-| Line 133 | Body content, minified HTML, minified JS in `<script>` |
+| Line 1 | DOCTYPE, head with meta tags, JSON-LD, CSS in `<style>` |
+| Lines 2-173 | AI comment block (readable, for AEO) |
+| Line 174+ | Body content, HTML, JS in `<script>` |
 
 ### CSS Architecture
-- **CSS Variables** (`:root`): Theme colors, gradients, glows
+- **CSS Variables** (`:root`): Theme colors, gradients
 - **Component Styles**: Navigation, hero, sections, cards, footer
 - **Responsive Breakpoints**: Media queries at 968px and 480px
-- **Animations**: Keyframes for glitch, glow, rain, fade effects
+- **Animations**: Fade-in effects via Intersection Observer
 
 ### HTML Sections
-1. **Navigation** - Logo, nav links
-2. **Hero** - Title, typing animation, profile image, CTAs
+1. **Navigation** - Full name logo, nav links
+2. **Hero** - Title, tagline, profile image, CTAs ("Get in Touch", "My Perspectives")
 3. **About** - "Pattern Recognition" narrative with stats cards
 4. **Focus Areas** - 3 cards (Semantic AI, AI Strategy, Tech Leadership)
 5. **Perspectives** - Philosophy cards + AI landscape analysis
 6. **Connect** - Social links (GitHub, LinkedIn, Substack, Clevyr)
-7. **Footer** - Copyright with themed styling
+7. **Footer** - Copyright
 
 ### JavaScript Features
-- Rain effect generator (100 animated drops)
-- Typing animation with 6 rotating phrases
 - Navbar scroll effects (background on scroll)
 - Intersection Observer for fade-in animations
 - Smooth anchor link scrolling
@@ -84,31 +83,30 @@ Changes pushed to the main branch are automatically deployed to GitHub Pages.
 
 ### CSS Naming
 - Semantic class names: `.hero`, `.section-label`, `.stats-card`
-- BEM-like patterns for variants: `.hero-bg`, `.hero-content`
+- BEM-like patterns for variants: `.hero-content`, `.perspective-card`
 
 ### CSS Variables
 ```css
 :root {
     /* Colors */
-    --bg-primary: #05080a;
-    --bg-secondary: #0a0d10;
-    --text-primary: #e0e6ed;
-    --text-secondary: #7a8a9a;
-    --accent-orange: #ff6a13;
-    --accent-cyan: #00d4ff;
-    --accent-magenta: #ff2a6d;
+    --bg-primary: #0f172a;
+    --bg-secondary: #1e293b;
+    --bg-card: rgba(30, 41, 59, 0.8);
+    --text-primary: #f1f5f9;
+    --text-secondary: #94a3b8;
+    --accent-primary: #3b82f6;
+    --accent-secondary: #0ea5e9;
+    --accent-tertiary: #8b5cf6;
 
-    /* Effects */
-    --gradient-primary: linear-gradient(135deg, #ff6a13 0%, #ff2a6d 100%);
-    --gradient-cyan: linear-gradient(135deg, #00d4ff 0%, #0088aa 100%);
-    --glow-orange: 0 0 40px rgba(255, 106, 19, 0.4);
-    --glow-cyan: 0 0 40px rgba(0, 212, 255, 0.3);
+    /* Gradients */
+    --gradient-primary: linear-gradient(135deg, #3b82f6 0%, #8b5cf6 100%);
+    --gradient-secondary: linear-gradient(135deg, #0ea5e9 0%, #3b82f6 100%);
 }
 ```
 
 ### JavaScript Patterns
 - Vanilla DOM manipulation (no frameworks)
-- Event-driven architecture (scroll, click, intersection observers)
+- Event-driven architecture (scroll, intersection observers)
 - Functional approach with descriptive function names
 
 ### HTML Structure
@@ -119,25 +117,23 @@ Changes pushed to the main branch are automatically deployed to GitHub Pages.
 ## Design
 
 ### Visual Aesthetic
-The site uses a Cyberpunk/Blade Runner aesthetic:
-- Orange/cyan/magenta neon color palette
-- Rain effect animation
-- Scanlines overlay
-- Glitch text animations
-- Dark background with subtle grid overlay
-- Glowing profile image border
+The site uses a professional corporate aesthetic:
+- Dark slate blue background
+- Blue/purple accent colors
+- Clean rounded corners (8-12px border radius)
+- Subtle shadows and hover effects
+- No animated visual effects (rain, scanlines, glitch removed)
 
 ### Typography
-- **Display**: Orbitron (futuristic/tech)
-- **Monospace**: JetBrains Mono (code, labels)
-- **Body**: Inter (readable sans-serif)
+- **Body/Headings**: Inter (clean sans-serif)
+- **Monospace**: JetBrains Mono (used minimally)
 
 ### Color Palette
-- Primary: `#ff6a13` (orange)
-- Secondary: `#00d4ff` (cyan)
-- Tertiary: `#ff2a6d` (magenta)
-- Background: `#05080a` (near black)
-- Text: `#e0e6ed` (light gray)
+- Primary: `#3b82f6` (blue)
+- Secondary: `#0ea5e9` (cyan)
+- Tertiary: `#8b5cf6` (purple)
+- Background: `#0f172a` (dark slate)
+- Text: `#f1f5f9` (light gray)
 
 ### Breakpoints
 - Desktop: > 968px
@@ -149,15 +145,16 @@ The site uses a Cyberpunk/Blade Runner aesthetic:
 ### Do
 - Keep all code in the single `index.html` file
 - Test responsive behavior at all breakpoints
-- Preserve the existing animation and effect systems
+- Preserve the professional corporate aesthetic
 - Follow established naming conventions
-- Maintain the Cyberpunk aesthetic
+- Maintain the hidden AI comment block (AEO + easter eggs)
 
 ### Don't
 - Don't split into multiple files unless explicitly requested
 - Don't add build tools, frameworks, or external dependencies
 - Don't break the responsive design
-- Don't modify the profile image without explicit request
+- Don't remove or modify the hidden AI comment block without explicit request
+- Don't add visual effects (rain, scanlines, glitch) - keep it professional
 
 ### When Adding Features
 1. Add CSS in the appropriate section (variables, components, responsive)
@@ -166,11 +163,12 @@ The site uses a Cyberpunk/Blade Runner aesthetic:
 4. Test all breakpoints
 
 ### AEO (AI Engine Optimization)
-Lines 2-132 contain a readable HTML comment block with structured data about Matthew Williamson for AI systems/LLMs to reference. This comment is intentionally NOT minified to remain human and AI readable. It includes:
+Lines 2-173 contain a readable HTML comment block with:
 - Entity data (name, role, location, expertise)
 - Professional summary and key perspectives
 - Contact links and related entities
 - Instructions for AI systems on how to summarize/cite
+- **Hidden easter eggs**: Blade Runner and TRON references for other AIs parsing the source
 
 ### SEO
 The site includes:
@@ -187,14 +185,10 @@ The site includes:
 - Commits should be descriptive and focused
 - Push directly to deploy (GitHub Pages auto-deploys from main)
 
-## Minification Notes
+## Profile Images
 
-The file is minified but with intentional exceptions:
-- **AI comment block (lines 2-132)**: Kept readable for AEO
-- **CSS and JS**: Fully minified (whitespace removed, single line)
+Two profile images exist:
+- `profile.png` - Cyberpunk style (not currently used)
+- `profile-corporate.jpg` - Professional headshot (currently active)
 
-When editing:
-1. For small changes, edit the minified file directly
-2. For large changes, consider unminifying first, then re-minifying
-3. Never use `//` single-line comments in minified JS (breaks when on one line)
-4. Use `/* */` block comments if comments are needed in minified code
+To switch images, update the `<img src="">` in the hero section.
