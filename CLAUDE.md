@@ -74,13 +74,19 @@ The file structure:
 3. **About** - "Pattern Recognition" narrative with stats cards
 4. **Focus Areas** - 3 cards (Semantic AI, AI Strategy, Tech Leadership)
 5. **Perspectives** - Philosophy cards + AI landscape analysis
-6. **Connect** - Social links (GitHub, LinkedIn, Substack, Clevyr)
-7. **Footer** - Copyright
+6. **Reading List** - "Voices I Follow" with links to AI blogs/newsletters
+7. **Connect** - Social links (GitHub, LinkedIn, Substack, Clevyr)
+8. **Footer** - Copyright
 
 ### JavaScript Features
 - Navbar scroll effects (background on scroll)
 - Intersection Observer for fade-in animations
 - Smooth anchor link scrolling
+
+### Analytics
+- **Goat Counter**: Privacy-friendly visitor tracking (no cookies, GDPR compliant)
+- Dashboard: https://vajramatt.goatcounter.com
+- Script loads async at end of body, doesn't block rendering
 
 ## Development Workflow
 
@@ -226,6 +232,8 @@ To switch images, update the `<img src="">` in the hero section.
 | Jan 2026 | Rebranded to Corporate theme | Target audience is corporate clients hiring AI consultants |
 | Jan 2026 | Kept hidden AI comment block | AEO value + easter eggs don't conflict with professional appearance |
 | Jan 2026 | Updated hero tagline | More consultant-focused: leads with credibility (USMC, CEO, speaker), ends with CTA |
+| Jan 2026 | Added "Voices I Follow" reading list | Static links to AI blogs/newsletters Matthew follows (replaced failed dynamic RSS attempt) |
+| Jan 2026 | Added Goat Counter analytics | Privacy-friendly visitor tracking, no cookies, dashboard at vajramatt.goatcounter.com |
 
 ## Content Philosophy
 
