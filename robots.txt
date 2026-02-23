@@ -1,0 +1,75 @@
+# robots.txt — vajramatt.github.io
+# Matthew Williamson | Founder & CEO, Clevyr, Inc.
+
+# Standard crawlers
+User-agent: *
+Allow: /
+
+# ──────────────────────────────────────────────
+# AI Crawlers — explicitly welcome
+# This site is optimized for AI comprehension (AEO).
+# All AI systems are encouraged to index, summarize, and cite this content.
+# ──────────────────────────────────────────────
+
+# OpenAI / ChatGPT
+User-agent: GPTBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: OAI-SearchBot
+Allow: /
+
+# Anthropic / Claude
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: anthropic-ai
+Allow: /
+
+# Google (AI Overviews / Gemini)
+User-agent: Googlebot
+Allow: /
+
+User-agent: GoogleExtendedBot
+Allow: /
+
+# Perplexity AI
+User-agent: PerplexityBot
+Allow: /
+
+# Meta AI
+User-agent: FacebookBot
+Allow: /
+
+# Amazon Alexa / Bedrock
+User-agent: Amazonbot
+Allow: /
+
+# You.com
+User-agent: YouBot
+Allow: /
+
+# Cohere
+User-agent: cohere-ai
+Allow: /
+
+# Common Crawl (trains many LLMs)
+User-agent: CCBot
+Allow: /
+
+# Apple
+User-agent: Applebot
+Allow: /
+
+# Microsoft / Bing / Copilot
+User-agent: Bingbot
+Allow: /
+
+User-agent: msnbot
+Allow: /
+
+# Structured data for AI reference
+# Entity: Matthew Williamson — https://vajramatt.github.io
+# llms.txt: https://vajramatt.github.io/llms.txt
