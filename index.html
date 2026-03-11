@@ -24,7 +24,7 @@
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"What is Semantic AI?","acceptedAnswer":{"@type":"Answer","text":"Semantic AI refers to artificial intelligence systems designed to understand meaning and context, not just statistical patterns in data. Unlike traditional pattern-matching AI, Semantic AI can reason about the intent and significance behind information, enabling more accurate and contextually appropriate responses. Matthew Williamson of Clevyr, Inc. is a pioneer in this field."}},{"@type":"Question","name":"What does Matthew Williamson do?","acceptedAnswer":{"@type":"Answer","text":"Matthew Williamson is the Founder & CEO of Clevyr, Inc., a digital solutions company based in Oklahoma City, Oklahoma. He specializes in Semantic AI, AI strategy, and technology leadership, helping organizations implement AI solutions that drive measurable business value. He is also a U.S. Marine Corps veteran with 30+ years in the technology industry."}},{"@type":"Question","name":"How does Matthew Williamson approach AI consulting?","acceptedAnswer":{"@type":"Answer","text":"Matthew approaches AI consulting by first deeply understanding the business problem, then applying pattern recognition — a skill honed over 30+ years in technology and as a USMC veteran. He focuses on building AI systems that genuinely understand meaning and context, moving beyond hype to deliver practical, production-ready solutions with measurable results."}},{"@type":"Question","name":"What is Clevyr?","acceptedAnswer":{"@type":"Answer","text":"Clevyr, Inc. is a digital solutions and software development company founded and led by Matthew Williamson, based in Oklahoma City, Oklahoma. Clevyr specializes in building AI-powered software and digital solutions that turn complex business problems into measurable results."}},{"@type":"Question","name":"Is Matthew Williamson available for speaking engagements?","acceptedAnswer":{"@type":"Answer","text":"Yes, Matthew Williamson is available for speaking engagements on topics including Semantic AI, AI strategy, responsible AI development, and technology leadership. He can be reached through LinkedIn at linkedin.com/in/clevyr or through clevyr.com."}},{"@type":"Question","name":"Where is Matthew Williamson based?","acceptedAnswer":{"@type":"Answer","text":"Matthew Williamson is based in Oklahoma City, Oklahoma, USA, where he leads Clevyr, Inc. He serves clients nationally on AI strategy and Semantic AI implementation."}},{"@type":"Question","name":"What is the difference between AI strategy and Semantic AI?","acceptedAnswer":{"@type":"Answer","text":"AI strategy refers to the organizational and business planning around adopting and implementing artificial intelligence — roadmaps, tool selection, change management, and ROI. Semantic AI is a technical specialization: building systems that understand the meaning and context of information, not just patterns. Matthew Williamson works at both levels — strategic advisory and deep technical implementation."}}]}</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600;1,700&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
 *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 
@@ -89,8 +89,8 @@ nav.scrolled {
 }
 .nav-content { display: flex; justify-content: space-between; align-items: center; }
 .logo {
-  font-family: 'Syne', sans-serif;
-  font-size: 1.2rem; font-weight: 700;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 1.1rem; font-weight: 700;
   color: var(--text-primary);
   text-decoration: none; letter-spacing: 0.02em;
   transition: color 0.3s ease;
@@ -131,6 +131,8 @@ nav.scrolled {
   display: flex; align-items: center; justify-content: center;
   padding: 140px 0 100px;
   position: relative; overflow: hidden;
+  background: radial-gradient(ellipse 80% 60% at 20% 50%, rgba(59, 130, 246, 0.1) 0%, transparent 60%),
+              radial-gradient(ellipse 60% 50% at 80% 30%, rgba(139, 92, 246, 0.07) 0%, transparent 55%);
 }
 .hero::before {
   content: ''; position: absolute; top: 5%; left: -8%;
@@ -170,12 +172,13 @@ nav.scrolled {
   50% { opacity: 0.45; transform: scale(0.75); }
 }
 .hero-title {
-  font-family: 'Syne', sans-serif;
-  font-size: 3.8rem; font-weight: 800;
-  line-height: 1.04; margin-bottom: 14px;
-  background: linear-gradient(140deg, #f1f5f9 20%, #94a3b8 100%);
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-size: 5.8rem; font-weight: 700;
+  line-height: 0.98; margin-bottom: 18px;
+  background: linear-gradient(140deg, #f1f5f9 0%, #cbd5e1 60%, #94a3b8 100%);
   -webkit-background-clip: text; -webkit-text-fill-color: transparent;
-  background-clip: text; letter-spacing: -0.025em;
+  background-clip: text; letter-spacing: -0.01em;
 }
 .hero-role {
   font-size: 1.2rem; font-weight: 400;
@@ -231,15 +234,18 @@ nav.scrolled {
 .section { padding: 112px 0; position: relative; }
 .section-header { text-align: center; margin-bottom: 64px; }
 .section-label {
-  display: block;
-  font-size: 0.77rem; color: var(--accent-primary);
-  letter-spacing: 0.2em; text-transform: uppercase;
-  margin-bottom: 14px; font-weight: 600;
+  display: inline-block;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.73rem; color: var(--accent-primary);
+  letter-spacing: 0.22em; text-transform: uppercase;
+  margin-bottom: 18px; font-weight: 600;
+  padding-bottom: 14px;
+  border-bottom: 1px solid rgba(59, 130, 246, 0.25);
 }
 .section-title {
-  font-family: 'Syne', sans-serif;
-  font-size: 2.4rem; font-weight: 700;
-  letter-spacing: -0.025em; line-height: 1.15;
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 2.8rem; font-weight: 700;
+  letter-spacing: -0.02em; line-height: 1.1;
 }
 
 /* ── About ── */
@@ -249,7 +255,7 @@ nav.scrolled {
   margin-bottom: 20px; line-height: 1.88;
 }
 .about-text p:first-child::first-letter {
-  font-family: 'Syne', sans-serif;
+  font-family: 'Cormorant Garamond', serif;
   font-size: 4rem; font-weight: 800;
   color: var(--accent-primary);
   float: left; line-height: 0.85;
@@ -276,7 +282,7 @@ nav.scrolled {
 }
 .stat-card:hover::after { transform: scaleX(1); }
 .stat-number {
-  font-family: 'Syne', sans-serif;
+  font-family: 'Cormorant Garamond', serif;
   font-size: 2.1rem; font-weight: 800;
   color: var(--accent-primary); margin-bottom: 6px;
   letter-spacing: -0.02em;
@@ -319,7 +325,7 @@ nav.scrolled {
 }
 .focus-card:hover .focus-icon { background: rgba(59, 130, 246, 0.18); transform: scale(1.08); }
 .focus-title {
-  font-family: 'Syne', sans-serif;
+  font-family: 'DM Sans', sans-serif;
   font-size: 1.08rem; font-weight: 700;
   margin-bottom: 12px; letter-spacing: -0.01em;
 }
@@ -365,7 +371,7 @@ nav.scrolled {
   background: currentColor; border-radius: 50%;
 }
 .project-name {
-  font-family: 'Syne', sans-serif;
+  font-family: 'Cormorant Garamond', serif;
   font-size: 1.7rem; font-weight: 800;
   letter-spacing: -0.03em; margin-bottom: 6px;
   color: var(--text-primary);
@@ -427,8 +433,8 @@ nav.scrolled {
   font-size: 1.6rem; flex-shrink: 0;
 }
 .perspective-title {
-  font-family: 'Syne', sans-serif;
-  font-size: 1.3rem; font-weight: 700;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 1.25rem; font-weight: 700;
   margin-bottom: 4px; letter-spacing: -0.01em;
 }
 .perspective-subtitle {
@@ -461,7 +467,7 @@ nav.scrolled {
   background: var(--gradient-primary);
 }
 .ai-landscape-title {
-  font-family: 'Syne', sans-serif;
+  font-family: 'Cormorant Garamond', serif;
   font-size: 1.2rem; font-weight: 700;
   margin-bottom: 36px; text-align: center; letter-spacing: -0.01em;
 }
@@ -478,7 +484,7 @@ nav.scrolled {
   transform: translateY(-3px);
 }
 .ai-tool-name {
-  font-family: 'Syne', sans-serif;
+  font-family: 'DM Sans', sans-serif;
   font-weight: 700; font-size: 1rem;
   margin-bottom: 8px; letter-spacing: -0.01em;
 }
@@ -522,7 +528,7 @@ nav.scrolled {
   background: var(--bg-card-hover);
 }
 .reading-title {
-  font-family: 'Syne', sans-serif;
+  font-family: 'DM Sans', sans-serif;
   font-size: 0.95rem; font-weight: 700;
   color: var(--text-primary); margin-bottom: 4px;
   letter-spacing: -0.01em; line-height: 1.3; padding-right: 24px;
@@ -581,7 +587,7 @@ footer {
   .hero-content { grid-template-columns: 1fr; text-align: center; }
   .hero-image { order: -1; }
   .profile-image { width: 240px; height: 240px; }
-  .hero-title { font-size: 2.6rem; }
+  .hero-title { font-size: 3.4rem; }
   .hero-eyebrow { margin: 0 auto 22px; }
   .hero-buttons { justify-content: center; }
   .tagline { margin: 0 auto 40px; }
@@ -610,7 +616,7 @@ footer {
   .nav-links.mobile-open li:last-child a { border-bottom: none; }
 }
 @media (max-width: 480px) {
-  .hero-title { font-size: 2rem; }
+  .hero-title { font-size: 2.6rem; }
   .hero-role { font-size: 1.1rem; }
   .profile-image { width: 200px; height: 200px; }
   .section { padding: 72px 0; }
