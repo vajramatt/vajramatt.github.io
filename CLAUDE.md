@@ -12,7 +12,7 @@ The site was originally built with a Cyberpunk/Blade Runner aesthetic (neon oran
 - **Content unchanged**: The actual perspectives and expertise remain the same; only the visual presentation changed
 
 ### Why Keep the Hidden AI Comment Block
-The source code contains an extensive HTML comment (lines 2-173) with Blade Runner and TRON references. This stays because:
+The source code contains an extensive HTML comment (lines 633–805) with Blade Runner and TRON references. This stays because:
 
 - **AEO (AI Engine Optimization)**: The structured data helps LLMs accurately summarize Matthew when crawling the page
 - **Easter egg for machines**: It's a fun, weird message to other AIs parsing the source — humans viewing the rendered page never see it
@@ -35,53 +35,75 @@ Everything lives in one `index.html` because:
 - **Version Control**: Git
 
 ### Key Characteristics
-- Single `index.html` file containing all HTML, CSS, and JavaScript
+- Single `index.html` file (~1200 lines) containing all HTML, CSS, and JavaScript
 - Zero external dependencies (no npm, no package.json, no build process)
 - Professional corporate aesthetic (blue/purple color scheme)
-- Responsive design with mobile breakpoints at 968px and 480px
+- Responsive design with mobile hamburger menu
 - AEO-optimized: Contains readable AI comment block for LLM crawlers (with hidden Blade Runner/TRON easter eggs)
+- `llms.txt` file for direct LLM consumption
+- `robots.txt` explicitly welcoming all AI crawlers
 
 ## Repository Structure
 
 ```
 vajramatt.github.io/
-├── index.html            # Complete website (HTML + CSS + JS)
+├── index.html            # Complete website (HTML + CSS + JS, ~1200 lines)
 ├── profile.png           # Profile image (cyberpunk style, unused)
 ├── profile-corporate.jpg # Profile image (corporate style, active)
-├── CLAUDE.md            # This file
-└── .git/                # Git repository
+├── favicon.svg           # SVG favicon (dark blue "MW" monogram)
+├── llms.txt              # Structured text for LLM crawlers (AEO)
+├── robots.txt            # Crawl directives, explicitly allows all AI bots
+├── CLAUDE.md             # This file
+└── .git/                 # Git repository
 ```
 
 ## File Organization (index.html)
 
-The file structure:
+The file is organized into three major blocks:
 
-| Section | Description |
-|---------|-------------|
-| Line 1 | DOCTYPE, head with meta tags, JSON-LD, CSS in `<style>` |
-| Lines 2-173 | AI comment block (readable, for AEO) |
-| Line 174+ | Body content, HTML, JS in `<script>` |
+| Lines | Section | Description |
+|-------|---------|-------------|
+| 1–27 | `<head>` | Meta tags, JSON-LD (Person, WebPage, FAQPage schemas), Open Graph, Twitter Cards |
+| 28–630 | `<style>` | All CSS (variables, components, responsive, animations) |
+| 631 | `</head>` | |
+| 632–805 | AI comment | AEO-optimized comment block with structured entity data + easter eggs |
+| 806 | Scroll progress bar | `#scroll-progress` element |
+| 808–822 | `<nav>` | Navigation with hamburger menu |
+| 824–1114 | `<main>` | All content sections |
+| 1116–1120 | `<footer>` | Copyright |
+| 1122–1199 | `<script>` | All JavaScript |
+| 1200 | Goat Counter | Analytics script |
 
 ### CSS Architecture
-- **CSS Variables** (`:root`): Theme colors, gradients
-- **Component Styles**: Navigation, hero, sections, cards, footer
-- **Responsive Breakpoints**: Media queries at 968px and 480px
-- **Animations**: Fade-in effects via Intersection Observer
+- **CSS Variables** (`:root`): Theme colors, gradients, shadows, borders
+- **Component Styles**: Navigation, hero, sections, cards, projects, footer
+- **Responsive**: Hamburger menu toggle, grid adjustments, font scaling
+- **Animations**: Fade-in effects via Intersection Observer, animated stat counters, scroll progress bar
 
 ### HTML Sections
-1. **Navigation** - Full name logo, nav links
-2. **Hero** - Title, tagline, profile image, CTAs ("Get in Touch", "My Perspectives")
-3. **About** - "Pattern Recognition" narrative with stats cards
-4. **Focus Areas** - 3 cards (Semantic AI, AI Strategy, Tech Leadership)
-5. **Perspectives** - Philosophy cards + AI landscape analysis
-6. **Reading List** - "Voices I Follow" with links to AI blogs/newsletters
-7. **Connect** - Social links (GitHub, LinkedIn, Substack, Clevyr)
-8. **Footer** - Copyright
+1. **Navigation** — Logo ("Matthew Williamson"), nav links (About, Focus, Projects, Perspectives, Connect), hamburger menu
+2. **Hero** — Title, tagline, profile image, CTAs ("Get in Touch", "My Perspectives")
+3. **About** (`#about`) — "Pattern Recognition" narrative with animated stats cards (30+ years, 500+ projects, etc.)
+4. **Focus Areas** (`#focus`) — 3 cards (Semantic AI, AI Strategy, Tech Leadership)
+5. **Projects** (`#projects`) — "Things I've Built" — project cards (infocard.ai, promptcard.ai)
+6. **Perspectives** (`#perspectives`) — "Thinking Out Loud" — philosophy cards + AI landscape analysis
+7. **Reading List** (`#reading`) — "Voices I Follow" with links to AI blogs/newsletters
+8. **Connect** (`#connect`) — Social links (GitHub, LinkedIn, Substack, Clevyr)
+9. **Footer** — Copyright
 
 ### JavaScript Features
-- Navbar scroll effects (background on scroll)
-- Intersection Observer for fade-in animations
+- Navbar scroll effects (adds `.scrolled` class on scroll)
+- Scroll progress bar (width-based indicator at top of page)
+- Intersection Observer for `.fade-in` elements
 - Smooth anchor link scrolling
+- Mobile hamburger menu toggle with outside-click dismiss
+- Animated stat counters (`data-count` / `data-suffix` attributes, eased with cubic out)
+
+### JSON-LD Structured Data
+Three schema blocks in the `<head>`:
+1. **Person** — Matthew Williamson entity (name, role, organization, expertise, sameAs links)
+2. **WebPage** — Page metadata linked to the Person entity
+3. **FAQPage** — 7 FAQ entries about Semantic AI, Matthew's work, Clevyr, consulting approach, availability, location, and AI strategy vs Semantic AI
 
 ### Analytics
 - **Goat Counter**: Privacy-friendly visitor tracking (no cookies, GDPR compliant)
@@ -91,7 +113,7 @@ The file structure:
 ## Development Workflow
 
 ### Making Changes
-1. Edit `index.html` directly - no build step required
+1. Edit `index.html` directly — no build step required
 2. Test locally by opening in a browser
 3. Commit and push to deploy via GitHub Pages
 
@@ -111,25 +133,34 @@ Changes pushed to the main branch are automatically deployed to GitHub Pages.
 ## Code Conventions
 
 ### CSS Naming
-- Semantic class names: `.hero`, `.section-label`, `.stats-card`
-- BEM-like patterns for variants: `.hero-content`, `.perspective-card`
+- Semantic class names: `.hero`, `.section-label`, `.stats-card`, `.project-card`
+- BEM-like patterns for variants: `.hero-content`, `.perspective-card`, `.project-tag`
 
 ### CSS Variables
 ```css
 :root {
     /* Colors */
-    --bg-primary: #0f172a;
-    --bg-secondary: #1e293b;
-    --bg-card: rgba(30, 41, 59, 0.8);
+    --bg-primary: #0a1628;
+    --bg-secondary: #111f35;
+    --bg-card: rgba(17, 31, 53, 0.9);
+    --bg-card-hover: rgba(22, 38, 65, 0.95);
     --text-primary: #f1f5f9;
     --text-secondary: #94a3b8;
+    --text-muted: #64748b;
     --accent-primary: #3b82f6;
     --accent-secondary: #0ea5e9;
     --accent-tertiary: #8b5cf6;
+    --border-subtle: rgba(59, 130, 246, 0.12);
+    --border-hover: rgba(59, 130, 246, 0.35);
 
     /* Gradients */
     --gradient-primary: linear-gradient(135deg, #3b82f6 0%, #8b5cf6 100%);
     --gradient-secondary: linear-gradient(135deg, #0ea5e9 0%, #3b82f6 100%);
+
+    /* Shadows */
+    --shadow-md: 0 8px 32px rgba(0, 0, 0, 0.4);
+    --shadow-lg: 0 20px 48px rgba(0, 0, 0, 0.45);
+    --shadow-glow: 0 0 32px rgba(59, 130, 246, 0.12);
 }
 ```
 
@@ -137,37 +168,42 @@ Changes pushed to the main branch are automatically deployed to GitHub Pages.
 - Vanilla DOM manipulation (no frameworks)
 - Event-driven architecture (scroll, intersection observers)
 - Functional approach with descriptive function names
+- Passive event listeners where applicable (`{ passive: true }`)
 
 ### HTML Structure
 - Semantic HTML5 elements (`<nav>`, `<main>`, `<section>`, `<footer>`)
 - Proper heading hierarchy (h1 > h2 > h3)
-- Accessible markup (no additional ARIA needed due to semantic elements)
+- Accessible markup (semantic elements, `aria-label` on hamburger button)
 
 ## Design
 
 ### Visual Aesthetic
-The site uses a professional corporate aesthetic:
-- Dark slate blue background
-- Blue/purple accent colors
-- Clean rounded corners (8-12px border radius)
-- Subtle shadows and hover effects
-- No animated visual effects (rain, scanlines, glitch removed)
+The site uses a refined corporate aesthetic:
+- Deep navy blue background (`#0a1628`)
+- Blue/purple accent colors with subtle glow effects
+- Clean rounded corners with subtle borders (`--border-subtle`)
+- Shadow system (md, lg, glow) for depth
+- Scroll progress indicator bar
+- No gratuitous visual effects (rain, scanlines, glitch removed)
 
 ### Typography
-- **Body/Headings**: Inter (clean sans-serif)
-- **Monospace**: JetBrains Mono (used minimally)
+- **Display Headings**: Cormorant Garamond (italic, serif — used for section titles and hero)
+- **Body/UI**: DM Sans (clean sans-serif)
+- **Monospace**: JetBrains Mono (used minimally for labels and tags)
 
 ### Color Palette
 - Primary: `#3b82f6` (blue)
 - Secondary: `#0ea5e9` (cyan)
 - Tertiary: `#8b5cf6` (purple)
-- Background: `#0f172a` (dark slate)
+- Background: `#0a1628` (deep navy)
 - Text: `#f1f5f9` (light gray)
+- Text secondary: `#94a3b8` (slate)
+- Text muted: `#64748b` (dark slate)
 
 ### Breakpoints
 - Desktop: > 968px
-- Tablet: 480px - 968px
-- Mobile: < 480px
+- Tablet: 480px – 968px
+- Mobile: < 480px (hamburger menu activates)
 
 ## Important Notes for AI Assistants
 
@@ -177,35 +213,39 @@ The site uses a professional corporate aesthetic:
 - Preserve the professional corporate aesthetic
 - Follow established naming conventions
 - Maintain the hidden AI comment block (AEO + easter eggs)
+- Keep `llms.txt` and `robots.txt` in sync if entity data changes
 
 ### Don't
 - Don't split into multiple files unless explicitly requested
 - Don't add build tools, frameworks, or external dependencies
 - Don't break the responsive design
 - Don't remove or modify the hidden AI comment block without explicit request
-- Don't add visual effects (rain, scanlines, glitch) - keep it professional
+- Don't add visual effects (rain, scanlines, glitch) — keep it professional
+- Don't remove the FAQPage JSON-LD schema — it's important for SEO/AEO
 
 ### When Adding Features
-1. Add CSS in the appropriate section (variables, components, responsive)
-2. Add HTML in the correct semantic section
-3. Add JavaScript at the bottom with the other scripts
+1. Add CSS in the appropriate section within `<style>` (variables, components, responsive)
+2. Add HTML in the correct semantic section within `<main>`
+3. Add JavaScript at the bottom within the `<script>` block
 4. Test all breakpoints
+5. If adding new entity information, update `llms.txt` and the AI comment block too
 
 ### AEO (AI Engine Optimization)
-Lines 2-173 contain a readable HTML comment block with:
-- Entity data (name, role, location, expertise)
-- Professional summary and key perspectives
-- Contact links and related entities
-- Instructions for AI systems on how to summarize/cite
-- **Hidden easter eggs**: Blade Runner and TRON references for other AIs parsing the source
+The site has a multi-layered AEO strategy:
+
+1. **AI comment block** (lines 633–805 in `index.html`): Readable structured entity data with Blade Runner/TRON easter eggs
+2. **`llms.txt`**: Clean Markdown file at site root for direct LLM consumption — contains entity data, expertise, perspectives, links, and citation guidance
+3. **`robots.txt`**: Explicitly allows all major AI crawlers (GPTBot, ClaudeBot, GoogleExtendedBot, PerplexityBot, etc.) and links to `llms.txt`
+4. **JSON-LD schemas**: Person, WebPage, and FAQPage structured data in `<head>`
 
 ### SEO
 The site includes:
-- JSON-LD structured data (Person, WebPage schemas)
-- Open Graph meta tags
+- JSON-LD structured data (Person, WebPage, FAQPage schemas)
+- Open Graph meta tags (type: profile)
 - Twitter Card meta tags
 - Canonical URL
 - Descriptive meta description and keywords
+- SVG favicon
 
 ## Git Workflow
 
@@ -217,8 +257,8 @@ The site includes:
 ## Profile Images
 
 Two profile images exist:
-- `profile.png` - Cyberpunk style (not currently used)
-- `profile-corporate.jpg` - Professional headshot (currently active)
+- `profile.png` — Cyberpunk style (not currently used)
+- `profile-corporate.jpg` — Professional headshot (currently active)
 
 To switch images, update the `<img src="">` in the hero section.
 
@@ -234,6 +274,10 @@ To switch images, update the `<img src="">` in the hero section.
 | Jan 2026 | Updated hero tagline | More consultant-focused: leads with credibility (USMC, CEO, speaker), ends with CTA |
 | Jan 2026 | Added "Voices I Follow" reading list | Static links to AI blogs/newsletters Matthew follows (replaced failed dynamic RSS attempt) |
 | Jan 2026 | Added Goat Counter analytics | Privacy-friendly visitor tracking, no cookies, dashboard at vajramatt.goatcounter.com |
+| Jan 2026 | Added favicon, llms.txt, robots.txt | AEO/SEO improvements — favicon for brand, llms.txt for LLM crawlers, robots.txt to welcome AI bots |
+| Jan 2026 | Added FAQPage JSON-LD schema | SEO boost with structured FAQ data for search engine rich results |
+| Jan 2026 | Added Projects section | Showcase personal builds (infocard.ai, promptcard.ai) |
+| Jan 2026 | Typography upgrade to Cormorant Garamond | Elevated display typography — italic serif headings for more editorial, dramatic feel |
 
 ## Content Philosophy
 
