@@ -343,6 +343,8 @@ nav.scrolled {
   position: relative;
 }
 .project-card:nth-child(2) { border-left-color: var(--accent-tertiary); }
+.project-card:nth-child(3) { border-left-color: var(--accent-secondary); }
+.project-card:nth-child(4) { border-left-color: var(--accent-tertiary); }
 .project-card:hover {
   border-color: var(--border-hover);
   border-left-color: var(--accent-secondary);
@@ -351,6 +353,7 @@ nav.scrolled {
   background: var(--bg-card-hover);
 }
 .project-card:nth-child(2):hover { border-left-color: var(--accent-tertiary); }
+.project-card:nth-child(4):hover { border-left-color: var(--accent-tertiary); }
 .project-status {
   display: inline-flex; align-items: center; gap: 7px;
   font-size: 0.72rem; font-weight: 600;
@@ -362,6 +365,16 @@ nav.scrolled {
   border-radius: 100px; width: fit-content;
 }
 .project-card:nth-child(2) .project-status {
+  color: var(--accent-tertiary);
+  background: rgba(139, 92, 246, 0.08);
+  border-color: rgba(139, 92, 246, 0.2);
+}
+.project-card:nth-child(3) .project-status {
+  color: var(--accent-primary);
+  background: rgba(59, 130, 246, 0.08);
+  border-color: rgba(59, 130, 246, 0.2);
+}
+.project-card:nth-child(4) .project-status {
   color: var(--accent-tertiary);
   background: rgba(139, 92, 246, 0.08);
   border-color: rgba(139, 92, 246, 0.2);
@@ -578,6 +591,8 @@ footer {
 .focus-card:nth-child(3) { transition-delay: 0.17s; }
 .project-card:nth-child(1) { transition-delay: 0.05s; }
 .project-card:nth-child(2) { transition-delay: 0.13s; }
+.project-card:nth-child(3) { transition-delay: 0.21s; }
+.project-card:nth-child(4) { transition-delay: 0.29s; }
 .perspective-card:nth-child(1) { transition-delay: 0.05s; }
 .perspective-card:nth-child(2) { transition-delay: 0.1s; }
 .perspective-card:nth-child(3) { transition-delay: 0.15s; }
@@ -943,6 +958,36 @@ End of line.
             <span class="project-tag">AI Tools</span>
           </div>
           <a href="https://promptcard.ai" target="_blank" rel="noopener noreferrer" class="project-link">Visit promptcard.ai</a>
+        </div>
+        <div class="project-card fade-in">
+          <div class="project-status">In Production</div>
+          <h3 class="project-name">chainproof.ai</h3>
+          <p class="project-tagline">Trust the Record. Verify the Agent.</p>
+          <p class="project-description">An API-first platform for logging and auditing agentic AI workflows. Every agent action is appended to a cryptographically hash-chained ledger — any post-hoc edit shifts all downstream hashes, detectable by anyone who recorded the chain head. Built on Cloudflare Durable Objects for strongly-consistent, append-only chains at the edge.</p>
+          <div class="project-tags">
+            <span class="project-tag">Cloudflare Workers</span>
+            <span class="project-tag">Durable Objects</span>
+            <span class="project-tag">D1</span>
+            <span class="project-tag">Hono</span>
+            <span class="project-tag">Vue 3</span>
+            <span class="project-tag">TypeScript SDK</span>
+          </div>
+          <a href="https://chainproof.ai" target="_blank" rel="noopener noreferrer" class="project-link">Visit chainproof.ai</a>
+        </div>
+        <div class="project-card fade-in">
+          <div class="project-status">Live Tool</div>
+          <h3 class="project-name">briefing.wtf</h3>
+          <p class="project-tagline">Your News. Edge-Fast. No Noise.</p>
+          <p class="project-description">A global news start page built Cloudflare-native. RSS feeds from dozens of sources land in D1 every 15 minutes, auto-pruned at 48 hours. A Durable Object powers the live market ticker with self-rearming alarms. No cookies, no tracking, no clutter — just signal.</p>
+          <div class="project-tags">
+            <span class="project-tag">Cloudflare Workers</span>
+            <span class="project-tag">Durable Objects</span>
+            <span class="project-tag">D1</span>
+            <span class="project-tag">Hono</span>
+            <span class="project-tag">React</span>
+            <span class="project-tag">RSS</span>
+          </div>
+          <a href="https://briefing.wtf" target="_blank" rel="noopener noreferrer" class="project-link">Visit briefing.wtf</a>
         </div>
       </div>
     </div>
